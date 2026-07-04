@@ -290,28 +290,3 @@ test_type,scene_id,scene_size,width,height,mode,threads,schedule,time_seconds,sp
 `results\scene_best_time_heatmap.png`：
 
 用于多场景比较。横轴是场景编号，纵轴是 `serial`、`openmp_static`、`openmp_dynamic`，每个格子显示该场景下的渲染时间。OpenMP 格子中还会标注该调度方式下测试得到的最优线程数。
-
-### 可用于报告截图的文件
-
-推荐使用以下文件作为报告截图或实验数据来源：
-
-```text
-results\benchmark.csv
-results\time_vs_threads.png
-results\speedup_vs_threads.png
-results\efficiency_vs_threads.png
-results\scene_best_time_heatmap.png
-results\scene_001\serial.png
-results\scene_001\openmp_static_t8.png
-results\scene_001\openmp_dynamic_t8.png
-```
-
-### 结果分析思路
-
-可以从以下角度分析实验结果：
-
-1. 对比 `serial` 和 `openmp` 的 `time_seconds`，说明并行优化是否降低运行时间。
-2. 对比 1、2、4、8 线程的 `speedup`，观察加速比是否随线程数提升。
-3. 对比 `static` 和 `dynamic` 调度，分析不同调度策略对性能的影响。
-4. 对比 `small`、`medium`、`large` 场景，说明场景规模越大，OpenMP 并行优势通常越明显。
-5. 结合 `scene_best_time_heatmap.png`，比较多个随机场景下串行、OpenMP static、OpenMP dynamic 的整体表现。
